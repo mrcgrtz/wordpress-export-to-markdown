@@ -10,8 +10,4 @@ module.exports = {
 		node: true,
 		es2022: true,
 	},
-	globals: {
-		Atomics: 'readonly',
-		SharedArrayBuffer: 'readonly',
-	},
 };
