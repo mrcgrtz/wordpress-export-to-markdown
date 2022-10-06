@@ -69,7 +69,8 @@ function collectPosts(data, postTypes, config) {
 					title: getPostTitle(post),
 					date: getPostDate(post),
 					categories: getCategories(post),
-					tags: getTags(post)
+					tags: getTags(post),
+					slug: getPostSlug(post)
 				},
 				content: translator.getPostContent(post, turndownService, config)
 			}));
