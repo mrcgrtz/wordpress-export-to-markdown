@@ -1,14 +1,14 @@
-/** @type {import('eslint').ESLint.ConfigData} */
+/** @type {import('eslint').Linter.Config} */
 module.exports = {
 	extends: [
 		'eslint:recommended',
 	],
 	parserOptions: {
-		ecmaVersion: 2018,
+		ecmaVersion: 'latest',
 	},
 	env: {
 		node: true,
-		es6: true,
+		es2022: true,
 	},
 	globals: {
 		Atomics: 'readonly',
