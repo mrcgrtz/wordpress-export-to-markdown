@@ -12,7 +12,7 @@
 		"wordpress"
 	],
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "eslint **/*.js"
 	},
 	"author": "Will Boyd <will@codersblock.com> (https://codersblock.com)",
 	"license": "MIT",
