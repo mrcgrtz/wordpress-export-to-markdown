@@ -1,5 +1,6 @@
 {
-	"name": "wordpress-export-to-markdown",
+	"name": "@mrcgrtz/wordpress-export-to-markdown",
+	"private": true,
 	"version": "2.2.2",
 	"description": "Converts a WordPress export XML file into Markdown files.",
 	"main": "index.js",
@@ -14,7 +15,18 @@
 	"scripts": {
 		"test": "eslint **/*.js"
 	},
-	"author": "Will Boyd <will@codersblock.com> (https://codersblock.com)",
+	"authors": [
+		{
+			"name": "Will Boyd",
+			"email": "will@codersblock.com",
+			"url": "https://codersblock.com/"
+		},
+		{
+			"name": "Marc Görtz",
+			"email": "git@marcgoertz.de",
+			"url": "https://marcgoertz.de/"
+		}
+	],
 	"license": "MIT",
 	"engines": {
 		"node": ">= 16.14"
