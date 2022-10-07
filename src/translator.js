@@ -8,7 +8,7 @@ function initTurndownService() {
 		codeBlockStyle: 'fenced'
 	});
 
-	turndownService.use(turndownPluginGfm.tables);
+	turndownService.use(turndownPluginGfm.gfm);
 
 	// preserve embedded tweets
 	turndownService.addRule('tweet', {
