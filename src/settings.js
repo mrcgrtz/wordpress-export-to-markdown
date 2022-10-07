@@ -6,9 +6,9 @@ export const image_file_request_delay = 500;
 // increase this if your file system becomes overloaded
 export const markdown_file_write_delay = 25;
 
-// enable this to include time with post dates
-// for example, "2020-12-25" would become "2020-12-25T11:20:35.000Z"
-export const include_time_with_date = false;
+// disable this to exclude time from post dates
+// for example, "2020-12-25T11:20:35.000Z" would become "2020-12-25"
+export const include_time_with_date = true;
 
 // override post date formatting with a custom formatting string (for example: 'yyyy LLL dd')
 // tokens are documented here: https://moment.github.io/luxon/docs/manual/formatting.html#table-of-tokens
