@@ -8,21 +8,22 @@ Each post is saved as a separate Markdown file with appropriate frontmatter. Ima
 
 ## Quick Start
 
-You'll need:
-- [Node.js](https://nodejs.org/) v12.14 or later
+You will need:
+
+- [Node.js](https://nodejs.org/) v16.14 or later
 - Your [WordPress export file](https://wordpress.org/support/article/tools-export-screen/) (be sure to export "All content" if you want to save images and/or pages)
 
-It is recommended that you drop your WordPress export file into the same directory that you run this script from so it's easy to find.
+It is recommended that you drop your WordPress export file into the same directory that you run this script from so it is easy to find.
 
 You can run this script immediately in your terminal with `npx`:
 
-```
+```shell
 npx wordpress-export-to-markdown
 ```
 
 Or you can clone and run (this makes repeated runs faster and allows you to tinker with the code). After cloning this repo, open your terminal to the package's directory and run:
 
-```
+```shell
 npm install && node index.js
 ```
 
@@ -34,13 +35,13 @@ The wizard makes it easy to configure your options, but you can also do so via t
 
 Using `npx`:
 
-```
+```shell
 npx wordpress-export-to-markdown --post-folders=false --prefix-date=true
 ```
 
 Using a locally cloned repo:
 
-```
+```shell
 node index.js --post-folders=false --prefix-date=true
 ```
 
@@ -62,7 +63,7 @@ Enable to have the script prompt you for each option. Disable to skip the wizard
 - Type: `file` (as a path string)
 - Default: `export.xml`
 
-The path to the WordPress export file that you want to parse. It is recommended that you drop your WordPress export file into the same directory that you run this script from so it's easy to find.
+The path to the WordPress export file that you want to parse. It is recommended that you drop your WordPress export file into the same directory that you run this script from so it is easy to find.
 
 ### Path to output folder?
 
@@ -86,7 +87,7 @@ Whether or not to organize output files into folders by year.
 - Type: `boolean`
 - Default: `false`
 
-Whether or not to organize output files into folders by month. You'll probably want to combine this with `--year-folders` to organize files by year then month.
+Whether or not to organize output files into folders by month. You will probably want to combine this with `--year-folders` to organize files by year then month.
 
 ### Create a folder for each post?
 
@@ -98,24 +99,28 @@ Whether or not to save files and images into post folders.
 
 If `true`, the post slug is used for the folder name and the post's Markdown file is named `index.md`. Each post folder will have its own `/images` folder.
 
-    /first-post
-        /images
-            potato.png
-        index.md
-    /second-post
-        /images
-            carrot.jpg
-            celery.jpg
-        index.md
-
-If `false`, the post slug is used to name the post's Markdown file. These files will be side-by-side and images will go into a shared `/images` folder.
-
+```text
+/first-post
+    /images
+        potato.png
+    index.md
+/second-post
     /images
         carrot.jpg
         celery.jpg
-        potato.png
-    first-post.md
-    second-post.md
+    index.md
+```
+
+If `false`, the post slug is used to name the post's Markdown file. These files will be side-by-side and images will go into a shared `/images` folder.
+
+```text
+/images
+    carrot.jpg
+    celery.jpg
+    potato.png
+first-post.md
+second-post.md
+```
 
 Either way, this can be combined with with `--year-folders` and `--month-folders`, in which case the above output will be organized under the appropriate year and month folders.
 
@@ -129,15 +134,19 @@ Whether or not to prepend the post date to the post slug when naming a post's fo
 
 If `--post-folders` is `true`, this affects the folder.
 
-    /2019-10-14-first-post
-        index.md
-    /2019-10-23-second-post
-        index.md
+```text
+/2019-10-14-first-post
+    index.md
+/2019-10-23-second-post
+    index.md
+```
 
 If `--post-folders` is `false`, this affects the file.
 
-    2019-10-14-first-post.md
-    2019-10-23-second-post.md
+```text
+2019-10-14-first-post.md
+2019-10-23-second-post.md
+```
 
 ### Save images attached to posts?
 
@@ -167,4 +176,4 @@ Some WordPress sites make use of a `"page"` post type and/or custom post types. 
 
 You can edit [settings.js](https://github.com/lonekorean/wordpress-export-to-markdown/blob/master/src/settings.js) to tweak advanced settings. This includes things like throttling image downloads or customizing the date format in frontmatter.
 
-You'll need to run the script locally (not using `npx`) to make use of advanced settings.
+You will need to run the script locally (not using `npx`) to make use of advanced settings.
