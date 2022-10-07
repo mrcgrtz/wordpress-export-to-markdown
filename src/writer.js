@@ -82,6 +82,10 @@ async function loadMarkdownFilePromise(post) {
 				// array of one or more strings
 				outputValue = value.reduce((list, item) => `${list}\n  - "${item}"`, '');
 			}
+		} else if (typeof value === 'object') {
+			outputValue = Object.entries(value).reduce((list, [key, val]) => {
+				return `${list}\n  ${key}: ${val}`;
+			}, '');
 		} else {
 			// single string value
 			const escapedValue = (value || '').replace(/"/g, '\\"');
