@@ -70,6 +70,7 @@ function collectPosts(data, postTypes, config) {
 					date: getPostDate(post),
 					categories: getCategories(post),
 					tags: getTags(post),
+					geo: getGeo(post),
 					slug: getPostSlug(post)
 				},
 				content: translator.getPostContent(post, turndownService, config)
@@ -120,6 +121,44 @@ function getPostDate(post) {
 	} else {
 		return dateTime.toISODate();
 	}
+}
+
+function getGeo(post) {
+	if (post.postmeta === undefined) {
+		return undefined;
+	}
+
+	const [latitude, longitude, altitude, accuracy, place] = [
+		'geo_latitude',
+		'geo_longitude',
+		'geo_altitude',
+		'geo_accuracy',
+		'mf2_place_name',
+	].map(field => {
+		const postmeta = post.postmeta.find(postmeta => postmeta.meta_key[0] === field);
+		return postmeta ? postmeta.meta_value[0] : undefined;
+	});
+
+	if (latitude && longitude) {
+		if (latitude === '0' && longitude === '0') {
+			// remove data for '0,0' coordinates which are false inputs
+			return undefined;
+		}
+
+		let geoUrl = `geo:${latitude},${longitude}`;
+		geoUrl += altitude ? `,${altitude}` : '';
+		geoUrl += accuracy ? `;u=${accuracy}` : '';
+
+		if (place && place.includes('"')) {
+			// this is a PHP serialized array with just 1 item, so we can apply a simple RegEx here
+			const [, placeName] = /"(.+)"/.exec(place);
+			geoUrl += `?text=${encodeURIComponent(placeName)}`;
+		}
+
+		return geoUrl;
+	}
+
+	return undefined;
 }
 
 function getCategories(post) {
