@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
-const compareVersions = require('compare-versions');
-const path = require('path');
-const process = require('process');
+import path from 'node:path';
+import process from 'node:process';
+import compareVersions from 'compare-versions';
 
-const wizard = require('./src/wizard');
-const parser = require('./src/parser');
-const writer = require('./src/writer');
+import * as wizard from './src/wizard.js';
+import * as parser from './src/parser.js';
+import * as writer from './src/writer.js';
 
 (async () => {
 	// Node version check

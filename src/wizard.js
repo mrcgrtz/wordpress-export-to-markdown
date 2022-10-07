@@ -1,10 +1,10 @@
-const camelcase = require('camelcase');
-const commander = require('commander');
-const fs = require('fs');
-const inquirer = require('inquirer');
-const path = require('path');
+import fs from 'node:fs';
+import path from 'node:path';
+import camelcase from 'camelcase';
+import commander from 'commander';
+import inquirer from 'inquirer';
 
-const package = require('../package.json');
+const packageJSON = JSON.parse(fs.readFileSync(path.resolve('./package.json')));
 
 // all user options for command line and wizard are declared here
 const options = [
@@ -160,7 +160,7 @@ function parseCommandLine(argv) {
 	// setup for help output
 	commander
 		.name('node index.js')
-		.version('v' + package.version, '-v, --version', 'Display version number')
+		.version('v' + packageJSON.version, '-v, --version', 'Display version number')
 		.helpOption('-h, --help', 'See the thing you\'re looking at right now')
 		.on('--help', () => {
 			console.log('\nMore documentation is at https://github.com/lonekorean/wordpress-export-to-markdown');
@@ -199,4 +199,4 @@ function validateFile(value) {
 	return isValid ? true : 'Unable to find file: ' + path.resolve(value);
 }
 
-exports.getConfig = getConfig;
+export { getConfig };

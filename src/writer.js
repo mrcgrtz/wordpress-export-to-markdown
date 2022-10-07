@@ -1,11 +1,11 @@
-const chalk = require('chalk');
-const fs = require('fs');
-const luxon = require('luxon');
-const path = require('path');
-const requestPromiseNative = require('request-promise-native');
+import fs from 'node:fs';
+import path from 'node:path';
+import chalk from 'chalk';
+import luxon from 'luxon';
+import requestPromiseNative from 'request-promise-native';
 
-const shared = require('./shared');
-const settings = require('./settings');
+import * as shared from './shared.js';
+import * as settings from './settings.js';
 
 async function writeFilesPromise(posts, config) {
 	await writeMarkdownFilesPromise(posts, config);
@@ -195,4 +195,4 @@ function checkFile(path) {
 	return fs.existsSync(path);
 }
 
-exports.writeFilesPromise = writeFilesPromise;
+export { writeFilesPromise };

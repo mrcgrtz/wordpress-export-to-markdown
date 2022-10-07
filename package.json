@@ -17,8 +17,9 @@
 	"author": "Will Boyd <will@codersblock.com> (https://codersblock.com)",
 	"license": "MIT",
 	"engines": {
-		"node": ">= 12.14.0"
+		"node": ">= 16"
 	},
+	"type": "module",
 	"dependencies": {
 		"camelcase": "^6.3.0",
 		"chalk": "^4.1.2",

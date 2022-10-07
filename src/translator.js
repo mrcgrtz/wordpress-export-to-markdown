@@ -1,5 +1,5 @@
-const turndown = require('turndown');
-const turndownPluginGfm = require('turndown-plugin-gfm');
+import turndown from 'turndown';
+import turndownPluginGfm from 'turndown-plugin-gfm';
 
 function initTurndownService() {
 	const turndownService = new turndown({
@@ -87,5 +87,4 @@ function getPostContent(post, turndownService, config) {
 	return content;
 }
 
-exports.initTurndownService = initTurndownService;
-exports.getPostContent = getPostContent;
+export { initTurndownService, getPostContent };
