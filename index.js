@@ -2,7 +2,7 @@
 
 import path from 'node:path';
 import process from 'node:process';
-import compareVersions from 'compare-versions';
+import { compareVersions } from 'compare-versions';
 
 import * as wizard from './src/wizard.js';
 import * as parser from './src/parser.js';
@@ -10,7 +10,7 @@ import * as writer from './src/writer.js';
 
 (async () => {
 	// Node version check
-	const requiredVersion = '12.14.0';
+	const requiredVersion = '16.14.0';
 	const currentVersion = process.versions.node;
 	if (compareVersions(currentVersion, requiredVersion) === -1) {
 		throw `This script requires Node v${requiredVersion} or higher, but you are using v${currentVersion}.`;

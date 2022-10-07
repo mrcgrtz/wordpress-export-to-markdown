@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import camelcase from 'camelcase';
-import commander from 'commander';
+import { program } from 'commander';
 import inquirer from 'inquirer';
 
 const packageJSON = JSON.parse(fs.readFileSync(path.resolve('./package.json')));
@@ -158,7 +158,7 @@ function replaceAliases(argv) {
 
 function parseCommandLine(argv) {
 	// setup for help output
-	commander
+	program
 		.name('node index.js')
 		.version('v' + packageJSON.version, '-v, --version', 'Display version number')
 		.helpOption('-h, --help', 'See the thing you\'re looking at right now')
@@ -174,10 +174,10 @@ function parseCommandLine(argv) {
 			input.isProvided = true;
 			return input.coerce(value);
 		};
-		commander.option(flag, input.description, coerce, input.default);
+		program.option(flag, input.description, coerce, input.default);
 	});
 
-	return commander.parse(argv);
+	return program.parse(argv);
 }
 
 function coerceBoolean(value) {

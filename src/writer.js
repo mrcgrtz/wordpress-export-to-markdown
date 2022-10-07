@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import chalk from 'chalk';
-import luxon from 'luxon';
+import { DateTime } from 'luxon';
 import requestPromiseNative from 'request-promise-native';
 
 import * as shared from './shared.js';
@@ -157,7 +157,7 @@ async function loadImageFilePromise(imageUrl) {
 }
 
 function getPostPath(post, config) {
-	const dt = luxon.DateTime.fromISO(post.frontmatter.date);
+	const dt = DateTime.fromISO(post.frontmatter.date);
 
 	// start with base output dir
 	const pathSegments = [config.output];

@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-import luxon from 'luxon';
+import { DateTime } from 'luxon';
 import xml2js from 'xml2js';
 
 import * as shared from './shared.js';
@@ -111,7 +111,7 @@ function getPostTitle(post) {
 }
 
 function getPostDate(post) {
-	const dateTime = luxon.DateTime.fromRFC2822(post.pubDate[0], { zone: 'utc' });
+	const dateTime = DateTime.fromRFC2822(post.pubDate[0], { zone: 'utc' });
 
 	if (settings.custom_date_formatting) {
 		return dateTime.toFormat(settings.custom_date_formatting);
