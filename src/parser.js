@@ -71,6 +71,7 @@ function collectPosts(data, postTypes, config) {
 					categories: getCategories(post),
 					tags: getTags(post),
 					geo: getGeo(post),
+					syndication: getSyndicationLinks(post),
 					slug: getPostSlug(post)
 				},
 				content: translator.getPostContent(post, turndownService, config)
@@ -156,6 +157,17 @@ function getGeo(post) {
 		}
 
 		return geoUrl;
+	}
+
+	return undefined;
+}
+
+function getSyndicationLinks(post) {
+	const postmeta = post.postmeta?.find(postmeta => postmeta.meta_key[0] === 'mf2_syndication');
+
+	if (postmeta?.meta_value?.[0]) {
+		const matches = [...postmeta.meta_value[0].matchAll(/"(.*?)"/g)];
+		return matches.map(([, url]) => url);
 	}
 
 	return undefined;
